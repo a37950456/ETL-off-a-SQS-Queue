@@ -30,6 +30,9 @@ cd ETL-off-a-SQS-Queue
 4. Pull and start docker containers.
   - Postgres 
   - LocalStack
+  ```bash
+  docker compose up
+  ```
 
 5. Test if you can read a message form the queue using awslocal.
 ```bash
@@ -58,3 +61,12 @@ python ETL.py --endpoint-url http://localhost:4566 --queue-name login-queue --ma
 
 - To recover the encrypted fields, we can use the function 
 reverse_pseudonymize(pseudonymized_value, type) in this code.
+
+
+## Checked Postgres connections
+- If you can't connet to Postgres successfully, make sure you have add postgres to local path
+
+## Checked AWS
+- If you can run 'awslocal sqs receive-message  --queue-url http://localhost:4566/000000000000/login-queue 
+' successfully, you will get one message like query_sample.json
+
