@@ -59,10 +59,8 @@ python ETL.py --endpoint-url http://localhost:4566 --queue-name login-queue --ma
 
 ## Decrypting masked PIIs
 - The `ip` and `device_id` fields are masked using pseudonymize, and we saved the mapping table with ip.csv and device.csv.
-
 - To recover the encrypted fields, we can use the function 
 reverse_pseudonymize(pseudonymized_value, type) in this code.
-
 
 ## Checked Postgres connections
 - If you can't connet to Postgres successfully, make sure you have add postgres to local path
@@ -71,3 +69,11 @@ reverse_pseudonymize(pseudonymized_value, type) in this code.
 - If you can run 'awslocal sqs receive-message  --queue-url http://localhost:4566/000000000000/login-queue 
 ' successfully, you will get one message like query_sample.json
 
+## Growing Dataset
+- If dataset growing the mapping table can help us prevent PPI process again.
+
+## To keep data secruity
+- Keep postgres username, password, host in keychain
+- Query-url and queu name need to get when deploying python script
+- Modulize Encryped and Decrypted functions 
+- Mapping table should saved at other folders
