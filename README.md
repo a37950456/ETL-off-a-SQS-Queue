@@ -12,6 +12,7 @@ record to a Postgres database that is made available via a custom postgres image
 ## To run the code
 1. Clone this repo.
 ```bash
+git clone https://github.com/a37950456/ETL-off-a-SQS-Queue.git
 ```
 
 2. Go into the cloned repo.
