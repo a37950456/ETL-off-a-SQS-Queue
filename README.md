@@ -8,6 +8,33 @@ values in those fields.
 3. Once you have flattened the JSON data object and masked those two fields, write each
 record to a Postgres database that is made available via a custom postgres image that has the tables pre created.
 
+## Background Knowledge
+* Docker: After downloaded docker image, wirte docker compose file with docker image name, environment, port.
+  If compose up successfully, you can connect to localstack, it will not like a typical files system.
+  If aws queue work successfully, than you are good to next step.
+```bash
+docker compose up. # run these two docker image
+docker compose down # shutdown these two docker image
+```
+* Postgres: Only need to check postgres coneection by command line, remember to add ';' in the end. If you run postgress command successfully, you will get this table.
+```bash
+user_id       | device_type |masked_ip | masked_device_id | locale | app_version | create_date 
+--------------+-------------+----------+------------------+--------+-------------+-------------
+```
+* Python script
+```python
+ sqs_client = boto3.client("sqs", endpoint_url = self.__endpoint_url, region_name='region',
+                                 aws_access_key_id='id_key', aws_secret_access_key='secret_key')
+```
+```python
+ postgres_conn = psycopg2.connect(
+            host = self.__host,
+            database = self.__database,
+            user = self.__username,
+            password = self.__password
+        )
+```
+
 
 ## To run the code
 1. Clone this repo.
